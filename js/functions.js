@@ -33,7 +33,7 @@
 			return;
 		}
 
-		button = $( '.site-branding' ).find( '.secondary-toggle' );
+		button = $( '.header' ).find( '.secondary-toggle' );
 		if ( ! button ) {
 			return;
 		}

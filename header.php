@@ -27,16 +27,17 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentyfifteen' ); ?></a>
 
 	<div class="header">
+
 		<a href="<?php echo get_site_url(); ?>">
 	<div class="header-img">
-		<img class="img-responsive center header-img-bottom" src="<?php echo get_template_directory_uri(); ?>/img/gsfName1.png">
+		<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/header.jpg">
 	</div>
 		</a>
 
-	<div class="header-btn site-branding">
-		<img class="img-responsive center banner-img" src="<?php echo get_template_directory_uri(); ?>/img/banner.png">
-	<button class="secondary-toggle"><?php _e( 'Menu and widgets', 'twentyfifteen' ); ?></button>
-	</div>
+
+	<button class="secondary-toggle"></button>
+
+
 	</div>
 
 	<div id="sidebar" class="sidebar">
