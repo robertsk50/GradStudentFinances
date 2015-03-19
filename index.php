@@ -26,7 +26,8 @@ get_header(); ?>
 			<?php endif; ?>
 
 			<div class="hentry">
-				Welcome to grad student finances. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+Welcome to Grad Student Finances! This site is a resource for grad students who want to make the most of their money while still in school. Grad school isn't a time-out period from our financial lives, especially once you understand the power of habits and compound interest. Whether you want to minimize your loans, break out of living (stipend) paycheck-to-paycheck, or build your savings, we want to support you in your financial journey. Browse the pages below to learn how to improve your relationship with money, navigate the sidebar to join the GSF community, and email us with what you want to see on the site!
 			</div>
 
 			<div class="hentry">
