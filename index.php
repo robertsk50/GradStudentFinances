@@ -31,29 +31,37 @@ get_header(); ?>
 
 			<div class="hentry">
 				<h1> What would you like to learn more about?</h1>
-			<a href="">
+
+			<!-- Pay/Get Paid for School -->
+			<a href="<?php echo site_url(); ?>/get-paid">
+			<div class="front_cat">
+				<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/PGPFS_home.png">
+			</div></a>
+
+			<a href="<?php echo site_url(); ?>/stretch">
+				<div class="front_cat">
+					<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/StS_home.png">
+				</div>
+			</a>
+
+			<a href="<?php echo site_url(); ?>/taxes">
 			<div class="front_cat">
 				<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/FOYT_home.png">
 			</div>
 			</a>
-			<a href="">
-			<div class="front_cat">
-				<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/HILT_home.png">
-			</div></a>
-			<a href="">
+
+			<a href="<?php echo site_url(); ?>/wealth">
 			<div class="front_cat">
 				<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/PaGW_home.png">
 			</div></a>
-			<a href="">
+
+
+			<a href="<?php echo site_url(); ?>/life">
 			<div class="front_cat">
-				<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/PGPFS_home.png">
+				<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/HILT_home.png">
 			</div></a>
-			<a href="">
-			<div class="front_cat">
-				<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/StS_home.png">
-			</div>
-			</a>
-				<div class="spacer" style="clear: both;"></div>
+
+			<div class="spacer" style="clear: both;"></div>
 			</div>
 
 			<?php $frontpage_catslugs= array('figure-out-your-taxes', 'have-a-life', 'pay-get-paid-for-school', 'protect-and-grow-wealth', 'stretch-that-stipend');
@@ -82,7 +90,7 @@ get_header(); ?>
 
 				<?php endforeach;
 				wp_reset_postdata();?>
-
+				<div class="spacer" style="clear: both;"></div>
 			</div>
 			<?php endfor ?>
 
