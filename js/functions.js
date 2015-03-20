@@ -22,9 +22,17 @@
 		_this.html( _this.html() === screenReaderText.expand ? screenReaderText.collapse : screenReaderText.expand );
 	} );
 
-    $('userstory').readmore({
-        collapsedHeight: '155px'
-    });
+
+    $('.userstory-toggle').click( function (e) {
+        var _this = $(this);
+        _this.prev().toggleClass("userstory-fullheight");
+        if (_this.text() == "Read More") {
+            _this.text("Collapse");
+        }else {
+            _this.text("Read More");
+        }
+    } );
+
 
 	// Enable menu toggle for small screens.
 	( function() {

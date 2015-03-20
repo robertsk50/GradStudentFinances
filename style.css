@@ -5742,12 +5742,40 @@ userstory{
     border:solid;
     float:right;
     background-color:#FFFFCC;
+    overflow: hidden;
+    transition: 200ms;
+    padding: 5px;
+}
+
+.userstory-height{
+    height: 165px;
+}
+
+.userstory-fullheight{
+    height: auto;
 }
 
 userstory img{
-    float:left;
-    padding: 5px;
+    float:right;
+    margin-bottom: 5px;
+    margin-left: 5px;
 }
+
+userstory .boldfont{
+    font-weight: bold;
+    font-size: 20px;
+    font-size: 2.0rem;
+}
+
+userstory p{
+    margin-bottom: 1.0em;
+}
+
+/*userstory h4{
+    position: relative;
+    top: 18px;
+    left: 10px;
+}*/
 
 userstory a{
     border-bottom: 1px solid #d1d1d1;
