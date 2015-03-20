@@ -5781,6 +5781,10 @@ userstory a{
     border-bottom: 1px solid #d1d1d1;
 }
 
+a.userstory-toggle{
+    cursor: pointer;
+}
+
 /**
  * 16.0 Print
  */

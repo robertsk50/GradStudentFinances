@@ -353,7 +353,7 @@ function userstory_func( $atts ) {
 		$s = $s . "\n <p class=\"boldfont\"> " . $the_post->post_title . "</p>";
 		$s = $s . "\n" . $the_post->post_content;
 		$s = $s . "\n </userstory>";
-		$s = $s . "\n <a href=\"\" class=\"userstory-toggle\">Read More</a><br><br>";
+		$s = $s . "\n <a class=\"userstory-toggle\">Read More</a><br><br>";
 		return $s;
 	}
 
