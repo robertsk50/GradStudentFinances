@@ -22,9 +22,9 @@
 				 */
 				do_action( 'twentyfifteen_credits' );
 			?>
-			<a href="">About</a>
-			<a href="">Disclaimer</a>
-			<a href="">Contact</a>
+			<a href="<?php echo get_site_url(); ?>/about">About</a>
+			<a href="<?php echo get_site_url(); ?>/disclaimer">Disclaimer</a>
+			<a href="<?php echo get_site_url(); ?>/contact">Contact</a>
 		</div><!-- .site-info -->
 	</footer><!-- .site-footer -->
 
