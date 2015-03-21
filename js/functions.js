@@ -25,14 +25,16 @@
 
     $('.userstory-toggle').click( function (e) {
         var _this = $(this);
-        _this.prev().toggleClass("userstory-fullheight");
+        //_this.prev().toggleClass("userstory-fullheight");
         if (_this.text() == "Read More") {
+            _this.prev().css("height",_this.prev()[0].scrollHeight);
             _this.text("Collapse");
         }else {
+            _this.prev().css("height","165px");
             _this.text("Read More");
+
         }
     } );
-
 
 	// Enable menu toggle for small screens.
 	( function() {
