@@ -23,18 +23,36 @@
 	} );
 
 
-    $('.userstory-toggle').click( function (e) {
+    /*$('.userstory-toggle').click( function (e) {
         var _this = $(this);
         //_this.prev().toggleClass("userstory-fullheight");
         if (_this.text() == "Read More") {
-            _this.prev().css("height",_this.prev()[0].scrollHeight);
+            _this.prev().css("width","100%");
+            //_this.prev().hide().show(0);
+            _this.prev().css("height",userStoryHeight);//_this.prev()[0].scrollHeight);
             _this.text("Collapse");
         }else {
             _this.prev().css("height","165px");
+            _this.prev().css("width","50%");
             _this.text("Read More");
 
         }
-    } );
+    } );*/
+
+    $('.truncated').after('<a class="userstory-toggle">Read More</a>') //Create toggle link
+        .next().on('click', function(){
+            var _this = $(this);
+            _this.prev().toggle();
+            if(_this.text() == "Read More"){
+                _this.parent().css("width","100%");
+                _this.text("Collapse");
+            }else{
+                _this.parent().css("width","40%");
+                _this.text("Read More");
+            }
+
+
+        });
 
 	// Enable menu toggle for small screens.
 	( function() {
@@ -126,6 +144,11 @@
 		$window        = $( window );
 		$sidebar       = $( '#sidebar' ).first();
 		adminbarOffset = $body.is( '.admin-bar' ) ? $( '#wpadminbar' ).height() : 0;
+
+        /*var usToggle =  $('.userstory-toggle');
+        userStoryHeight = usToggle.prev()[0].scrollHeight;
+        usToggle.prev().css("width","40%");
+        usToggle.prev().css("visibility","visible");*/
 
 		$window
 			.on( 'scroll.twentyfifteen', scroll )

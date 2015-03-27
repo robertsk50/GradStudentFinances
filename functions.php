@@ -155,13 +155,13 @@ function twentyfifteen_fonts_url() {
 	$subsets   = 'latin,latin-ext';
 
 	/* translators: If there are characters in your language that are not supported by Noto Sans, translate this to 'off'. Do not translate into your own language. */
-	if ( 'off' !== _x( 'on', 'Noto Sans font: on or off', 'twentyfifteen' ) ) {
-		$fonts[] = 'Noto Sans:400italic,700italic,400,700';
+	if ( 'off' !== _x( 'on', 'PT Sans font: on or off', 'twentyfifteen' ) ) {
+		$fonts[] = 'PT Sans:400italic,700italic,400,700';
 	}
 
 	/* translators: If there are characters in your language that are not supported by Noto Serif, translate this to 'off'. Do not translate into your own language. */
-	if ( 'off' !== _x( 'on', 'Noto Serif font: on or off', 'twentyfifteen' ) ) {
-		$fonts[] = 'Noto Serif:400italic,700italic,400,700';
+	if ( 'off' !== _x( 'on', 'PT Serif font: on or off', 'twentyfifteen' ) ) {
+		$fonts[] = 'PT Serif:400italic,700italic,400,700';
 	}
 
 	/* translators: If there are characters in your language that are not supported by Inconsolata, translate this to 'off'. Do not translate into your own language. */
@@ -348,12 +348,15 @@ function userstory_func( $atts ) {
 	if($a['post'] >= 0) {
 		$the_post = get_post( $a['post'] );
 
-		$s = '<userstory class="userstory-height">';
-		$s = $s . "\n" . get_the_post_thumbnail( $the_post->ID, 'thumbnail' );
+		$s = '<userstory>';
+		$s = $s . "\n" . get_the_post_thumbnail( $the_post->ID, array(100,100) );
 		$s = $s . "\n <p class=\"boldfont\"> " . $the_post->post_title . "</p>";
-		$s = $s . "\n" . $the_post->post_content;
+		$s = $s . "\n <div class=\"truncated\">";
+		$s = $s . "\n" . apply_filters( 'the_content', $the_post->post_content );
+		//$s = $s . "\n" . $the_post->post_content;
+		$s = $s . "\n </div>";
 		$s = $s . "\n </userstory>";
-		$s = $s . "\n <a class=\"userstory-toggle\">Read More</a><br><br>";
+		//$s = $s . "\n <a class=\"userstory-toggle\">Read More</a><br><br>";
 		return $s;
 	}
 
