@@ -90,12 +90,12 @@ Welcome to Grad Student Finances! This site is a resource for grad students who 
 
 									<h2><span>
 										<?php $wrapped_title = wordwrap_title(25);
-										for ($i = 0; $i < count($wrapped_title); $i++):
-											if($i != 0){ ?>
+										for ($j = 0; $j < count($wrapped_title); $j++):
+											if($j != 0){ ?>
 											<span class='spacer'></span>
 											<?php } ?>
-											<?php echo $wrapped_title[$i] ?><span class='spacer'></span>
-											<?php if( ($i-1) != count($wrapped_title) ) { ?>
+											<?php echo $wrapped_title[$j] ?><span class='spacer'></span>
+											<?php if( ($j-1) != count($wrapped_title) ) { ?>
 												<br />
 											<?php } ?>
 
