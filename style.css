@@ -5735,11 +5735,12 @@ img.center {
     letter-spacing: -1px;
     background: rgb(0, 0, 0); /* fallback color */
     background: rgba(0, 0, 0, 0.7);
-    padding: 10px;
+    padding: 7px;
 }
 
 .cat-image h2 span.spacer {
     padding:0 5px;
+    background: none;
 }
 
 .header span.spacer {
@@ -5752,7 +5753,7 @@ img.center {
     padding: 10px;
 }
 
-.hentry h2{
+.hentry > h2{
     color: #437da7;
     font-family: "PT Sans", sans-serif;
     padding: 10px;

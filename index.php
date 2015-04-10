@@ -87,7 +87,20 @@ Welcome to Grad Student Finances! This site is a resource for grad students who 
 									} else { ?>
 										<img width="300" height="200" src="<?php echo get_template_directory_uri(); ?>/img/defaultImage_300x200.jpg" class="attachment-medium wp-post-image" alt="default">
 									<?php } ?>
-									<h2 class=""><span><?php the_title(); ?><span class='spacer'></span></h2>
+
+									<h2><span>
+										<?php $wrapped_title = wordwrap_title(25);
+										for ($i = 0; $i < count($wrapped_title); $i++):
+											if($i != 0){ ?>
+											<span class='spacer'></span>
+											<?php } ?>
+											<?php echo $wrapped_title[$i] ?><span class='spacer'></span>
+											<?php if( ($i-1) != count($wrapped_title) ) { ?>
+												<br />
+											<?php } ?>
+
+										<?php endfor ?>
+											</span>
 								</div>
 							</a>
 						</div>

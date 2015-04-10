@@ -364,3 +364,10 @@ function userstory_func( $atts ) {
 
 }
 add_shortcode( 'userstory', 'userstory_func' );
+
+
+function wordwrap_title($char_limit=25){
+	$post_title = the_title('','',false);
+	$wrapped_title = wordwrap($post_title,$char_limit,"\n",true);
+	return explode("\n", $wrapped_title);
+}
