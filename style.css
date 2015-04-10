@@ -5710,6 +5710,7 @@ img.center {
 .cat-image-container{
     width: 33%;
     float: left;
+    padding:1px;
 }
 
 .cat-image {
