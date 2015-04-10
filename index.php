@@ -52,7 +52,7 @@ Welcome to Grad Student Finances! This site is a resource for grad students who 
 			</a>
 
 			<a href="<?php echo site_url(); ?>/wealth">
-			<div class="front_cat">
+			<div class="front_cat bump-right">
 				<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/PaGW_home.png">
 			</div></a>
 
@@ -65,36 +65,40 @@ Welcome to Grad Student Finances! This site is a resource for grad students who 
 			<div class="spacer" style="clear: both;"></div>
 			</div>
 
-			<?php $frontpage_catslugs= array('figure-out-your-taxes', 'have-a-life', 'pay-get-paid-for-school', 'protect-and-grow-wealth', 'stretch-that-stipend');
-			      $frontpage_catnames= array('Figure Out Your Taxes', 'Have a Life', 'Pay/Get Paid for School', 'Protect and Grow Wealth', 'Stretch that Stipend');
-			for ($i = 0; $i<sizeof($frontpage_catslugs); $i++): ?>
 			<div class="hentry">
-				<h1><?php echo $frontpage_catnames[$i] ?></h1>
+				<h1>Other Finance Topics</h1>
+			<?php $frontpage_catslugs= array('reporting', 'investing', 'frugality');
+			      $frontpage_catnames= array('Reporting', 'Investing', 'Frugality');
+			for ($i = 0; $i<sizeof($frontpage_catslugs); $i++): ?>
+
+				<h2><?php echo $frontpage_catnames[$i] ?></h2>
 				<?php
-				$args = array( 'posts_per_page' => 3, 'offset'=> 0, 'category_name' => $frontpage_catslugs[$i] );
+				$args = array( 'posts_per_page' => 3, 'offset'=> 0, 'tag' => $frontpage_catslugs[$i] );
 
-				$myposts = get_posts( $args );
-				foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
+				$myposts = new WP_Query( $args );
+				if($myposts->have_posts() ){
+					while($myposts->have_posts()) : $myposts->the_post(); ?>
 
-					<div class = "cat-image-container">
-						<a href="<?php echo the_permalink(); ?>">
-							<div class="cat-image">
-								<?php if ( has_post_thumbnail( $thumbnail->ID ) ) {
-									echo get_the_post_thumbnail( $post->ID, 'medium' );
-								} else { ?>
-									<img width="300" height="200" src="<?php echo get_template_directory_uri(); ?>/img/defaultImage_300x200.jpg" class="attachment-medium wp-post-image" alt="default">
-								<?php } ?>
-								<h2 class=""><span><?php the_title(); ?><span class='spacer'></span></h2>
-							</div>
-						</a>
-					</div>
+						<div class = "cat-image-container">
+							<a href="<?php echo the_permalink(); ?>">
+								<div class="cat-image">
+									<?php if ( has_post_thumbnail( $thumbnail->ID ) ) {
+										echo get_the_post_thumbnail( $post->ID, 'medium' );
+									} else { ?>
+										<img width="300" height="200" src="<?php echo get_template_directory_uri(); ?>/img/defaultImage_300x200.jpg" class="attachment-medium wp-post-image" alt="default">
+									<?php } ?>
+									<h2 class=""><span><?php the_title(); ?><span class='spacer'></span></h2>
+								</div>
+							</a>
+						</div>
 
-				<?php endforeach;
-				wp_reset_postdata();?>
+					<?php endwhile;
+				}
+				wp_reset_query();?>
 				<div class="spacer" style="clear: both;"></div>
-			</div>
-			<?php endfor ?>
 
+			<?php endfor ?>
+			</div>
 
 		<?php if ( have_posts() ) : ?>
 		<?php

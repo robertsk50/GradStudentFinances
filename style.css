@@ -1370,7 +1370,7 @@ img.aligncenter {
 .widget-title {
 	color: #437da7;
 	font-family: "PT Sans", sans-serif;
-	margin: 0 0 1.6em;
+	margin: 0 0 0.2em;
 	letter-spacing: 0.04em;
 	text-transform: uppercase;
 }
@@ -2684,12 +2684,12 @@ p > video {
 	}
 
 	.entry-header {
-		padding: 0 9.0909%;
+		/*padding: 0 9.0909%;*/
 	}
 
 	.entry-content,
 	.entry-summary {
-		padding: 0 9.0909% 9.0909%;
+		/*padding: 0 9.0909% 9.0909%;*/
 	}
 
 	.entry-footer {
@@ -3093,7 +3093,7 @@ p > video {
 	}
 
 	.widget-title {
-		margin: 0 0 1.5em;
+		margin: 0 0 0.2em;
 	}
 
 	.widget_calendar td,
@@ -4285,7 +4285,11 @@ p > video {
 	}
 
 	.hentry {
-		padding: 1%;
+		padding: 3%;
+        font-size: 18px;
+        font-size: 1.8rem;
+        line-height: 28px;
+        line-height: 2.8rem;
 	}
 
 	.hentry + .hentry,
@@ -4299,7 +4303,7 @@ p > video {
 	}
 
 	.entry-header {
-		padding: 0 10%;
+		/*padding: 0 10%;*/
 	}
 
 	.entry-title {
@@ -4311,7 +4315,7 @@ p > video {
 
 	.entry-content,
 	.entry-summary {
-		padding: 0 10% 10%;
+		/*padding: 0 10% 10%;*/
 	}
 
 	.entry-content h1,
@@ -5610,19 +5614,23 @@ p > video {
 
 .front_cat{
     float: left;
-    width: 19%;
+    width: 30%;
     /*height: 120px;*/
     text-align: center;
     border-radius: 10px;
     /*box-shadow: 10px 10px 5px #888888;*/
     /*padding: 10px;*/
-    margin: 0.5%;
+    margin: 1.66%;
     /*display: flex;*/
     justify-content: center; /* align horizontal */
     align-items: center; /* align vertical */
 
 }
 /* border: 2px solid; */
+
+.bump-right{
+    margin-left: 18%;
+}
 
 .front_cat img{
     border-radius: 10px
@@ -5744,6 +5752,12 @@ img.center {
     padding: 10px;
 }
 
+.hentry h2{
+    color: #437da7;
+    font-family: "PT Sans", sans-serif;
+    padding: 10px;
+}
+
 .site-info a{
     margin: 0 2%;
 }
@@ -5794,7 +5808,7 @@ a.userstory-toggle{
     cursor: pointer;
 }
 
-.tptn_posts_widget ul{
+.widget ul{
     list-style-type: none;
 }
 
@@ -5807,6 +5821,23 @@ a.userstory-toggle{
     margin-right: auto;
     opacity: 0.4;
     display:block;
+}
+
+.floatright{
+   float:right;
+}
+
+.floatleft{
+    float:left;
+}
+
+.widget h2 a{
+    border-bottom: none;
+    color: #437da7;
+}
+
+.widget h2 a:hover{
+    color: #57b3e1;
 }
 
 /**

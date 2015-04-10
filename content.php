@@ -43,6 +43,8 @@
 				'separator'   => '<span class="screen-reader-text">, </span>',
 			) );
 		?>
+
+
 	</div><!-- .entry-content -->
 
 	<?php
@@ -56,5 +58,10 @@
 		<?php twentyfifteen_entry_meta(); ?>
 		<?php edit_post_link( __( 'Edit', 'twentyfifteen' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-footer -->
+	<div>
+	<div class="floatleft"><?php previous_post_link('%link','Prev: %title',TRUE); ?></div>
+	<div class="floatright"><?php next_post_link('%link','Next: %title',TRUE); ?></div>
+		<div class="spacer" style="clear: both;"></div>
+	</div>
 
 </article><!-- #post-## -->

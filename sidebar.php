@@ -38,6 +38,20 @@ if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) || is_active_sidebar(
 
 		<?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
 			<div id="widget-area" class="widget-area" role="complementary">
+				<?php if(!is_front_page()){?>
+					<aside class="widget widget_search">
+						<h2 class="widget-title">Categories</h2>
+						<ul>
+							<li><a href="<?php echo site_url(); ?>/get-paid">Pay/Get Paid for School</a></li>
+							<li><a href="<?php echo site_url(); ?>/stretch">Stretch that Stipend</a></li>
+							<li><a href="<?php echo site_url(); ?>/taxes">Figure Out Your Taxes </a></li>
+							<li><a href="<?php echo site_url(); ?>/wealth">Protect and Grow Wealth</a></li>
+							<li><a href="<?php echo site_url(); ?>/life">Have a Life, Too</a></li>
+						</ul>
+					</aside>
+				<?php } ?>
+
+
 				<?php dynamic_sidebar( 'sidebar-1' ); ?>
 			</div><!-- .widget-area -->
 		<?php endif; ?>
