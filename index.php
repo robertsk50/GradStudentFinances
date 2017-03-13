@@ -36,111 +36,73 @@ Welcome to Grad Student Finances! This site is a resource for grad students who 
 			<!-- Pay/Get Paid for School -->
 			<a href="<?php echo site_url(); ?>/get-paid">
 			<div class="front_cat">
-				<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/PGPFS_home.png">
+				<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/PGPFS_home_225x225.jpg">
 			</div></a>
 
 			<a href="<?php echo site_url(); ?>/stretch">
 				<div class="front_cat">
-					<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/StS_home.png">
+					<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/StS_home_225x225.jpg">
 				</div>
 			</a>
 
 			<a href="<?php echo site_url(); ?>/taxes">
 			<div class="front_cat">
-				<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/FOYT_home.png">
+				<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/FOYT_home_225x225.jpg">
 			</div>
 			</a>
 
 			<a href="<?php echo site_url(); ?>/wealth">
 			<div class="front_cat bump-right">
-				<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/PaGW_home.png">
+				<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/PaGW_home2_225x225.jpg">
 			</div></a>
 
 
 			<a href="<?php echo site_url(); ?>/life">
 			<div class="front_cat">
-				<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/HILT_home.png">
+				<img class="img-responsive center" src="<?php echo get_template_directory_uri(); ?>/img/HILT_home_225x225.jpg">
 			</div></a>
 
 			<div class="spacer" style="clear: both;"></div>
 			</div>
 
 			<div class="hentry">
-				<h1>Other Finance Topics</h1>
-			<?php $frontpage_catslugs= array('reporting', 'investing', 'frugality');
-			      $frontpage_catnames= array('Reporting', 'Investing', 'Frugality');
-			for ($i = 0; $i<sizeof($frontpage_catslugs); $i++): ?>
+                <h1>Most Recent Articles</h1>
+                <!-- Get the recent 6 articles-->
+                <div class="fp_article_container">
+                <?php
+                    $args = array( 'posts_per_page' => 6, 'offset'=> 0);
+                    $myposts = new WP_Query($args);
+                    if( $myposts->have_posts() ) {
+	                    while ( $myposts->have_posts() ) : $myposts->the_post();
+		                    ?>
+                            <div class="fp_article">
 
-				<h2><?php echo $frontpage_catnames[$i] ?></h2>
-				<?php
-				$args = array( 'posts_per_page' => 3, 'offset'=> 0, 'tag' => $frontpage_catslugs[$i] );
 
-				$myposts = new WP_Query( $args );
-				if($myposts->have_posts() ){
-					while($myposts->have_posts()) : $myposts->the_post(); ?>
+                                <!-- Get the article picture -->
+                                <div class="center">
+                                <a href="<?php echo the_permalink(); ?>">
+			                    <?php frontpage_image( $post ) ?>
+                                </a>
+                            </div>
 
-						<div class = "cat-image-container">
-							<a href="<?php echo the_permalink(); ?>">
-								<div class="cat-image">
-									<?php if ( has_post_thumbnail( $thumbnail->ID ) ) {
-										echo get_the_post_thumbnail( $post->ID, 'medium' );
-									} else { ?>
-										<img width="300" height="200" src="<?php echo get_template_directory_uri(); ?>/img/defaultImage_300x200.jpg" class="attachment-medium wp-post-image" alt="default">
-									<?php } ?>
+                                <!-- Get the title of the article -->
+                                <div class="fp_title">
+                                    <a href="<?php echo the_permalink(); ?>">
+                                        <h3><?php the_title(); ?></h3>
+                                    </a>
+                                </div>
 
-									<h2><span>
-										<?php $wrapped_title = wordwrap_title(25);
-										for ($j = 0; $j < count($wrapped_title); $j++):
-											if($j != 0){ ?>
-											<span class='spacer'></span>
-											<?php } ?>
-											<?php echo $wrapped_title[$j] ?><span class='spacer'></span>
-											<?php if( ($j-1) != count($wrapped_title) ) { ?>
-												<br />
-											<?php } ?>
+                                <div class="fp_article_text">
+                                <!-- Get the article text -->
+			                    <?php frontpage_article_blurb() ?>
+                                </div>
+                            </div>
 
-										<?php endfor ?>
-											</span>
-								</div>
-							</a>
-						</div>
+	                    <?php endwhile;
+                    } ?>
+                </div>
 
-					<?php endwhile;
-				}
-				wp_reset_query();?>
-				<div class="spacer" style="clear: both;"></div>
 
-			<?php endfor ?>
-			</div>
-
-		<?php if ( have_posts() ) : ?>
-		<?php
-			// Start the loop.
-			//while ( have_posts() ) : the_post();
-
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-			//	get_template_part( 'content', get_post_format() );
-
-			// End the loop.
-			//endwhile;
-
-			// Previous/next page navigation.
-//			the_posts_pagination( array(
-//				'prev_text'          => __( 'Previous page', 'twentyfifteen' ),
-//				'next_text'          => __( 'Next page', 'twentyfifteen' ),
-//				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>',
-//			) );
-
-		// If no content, include the "No posts found" template.
-		else :
-			get_template_part( 'content', 'none' );
-
-		endif;
-		?>
 
 		</main><!-- .site-main -->
 	</div><!-- .content-area -->

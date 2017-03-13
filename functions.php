@@ -80,6 +80,12 @@ function twentyfifteen_setup() {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 825, 510, true );
 
+	if ( function_exists( 'add_image_size' ) ) {
+		add_image_size( 'fp-article-thumb', 356, 200, array( 'center', 'top' ) ); //Take the center top of the image
+	}
+
+
+
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu',      'twentyfifteen' ),
@@ -370,4 +376,78 @@ function wordwrap_title($char_limit=25){
 	$post_title = the_title('','',false);
 	$wrapped_title = wordwrap($post_title,$char_limit,"\n",true);
 	return explode("\n", $wrapped_title);
+}
+
+function get_first_image($cur_post,$width, $height) {
+	$first_img = '';
+	ob_start();
+	ob_end_clean();
+
+	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $cur_post->post_content, $matches);
+	$first_img = $matches [1] [0];
+
+	return $first_img;
+}
+
+function has_first_image($cur_post) {
+	$first_img = '';
+	ob_start();
+	ob_end_clean();
+
+	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $cur_post->post_content, $matches);
+	$first_img = $matches [1] [0];
+
+	return ! empty($first_img);
+}
+
+function the_post_first_image_thumbnail( $post_thumbnail_id, $size = 'post-thumbnail', $attr = '' ) {
+	echo get_the_post_first_image_thumbnail( $post_thumbnail_id, null, $size, $attr );
+}
+
+/*
+ * KER: Copied after get_the_post_thumbnail in post-thumbnail-template.php
+ *
+ */
+function get_the_post_first_image_thumbnail( $post_thumbnail_id, $post_id = null, $size = 'post-thumbnail', $attr = '' ) {
+	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
+	$size = apply_filters( 'post_thumbnail_size', $size );
+	if ( $post_thumbnail_id ) {
+		do_action( 'begin_fetch_post_thumbnail_html', $post_id, $post_thumbnail_id, $size ); // for "Just In Time" filtering of all of wp_get_attachment_image()'s filters
+		if ( in_the_loop() )
+			update_post_thumbnail_cache();
+		$html = wp_get_attachment_image( $post_thumbnail_id, $size, false, $attr );
+		do_action( 'end_fetch_post_thumbnail_html', $post_id, $post_thumbnail_id, $size );
+	} else {
+		$html = '';
+	}
+	return apply_filters( 'post_thumbnail_html', $html, $post_id, $post_thumbnail_id, $size, $attr );
+}
+
+function frontpage_image($cur_post){
+	//First use the default thumbnail
+	if ( has_post_thumbnail($cur_post) ) {
+		$title = get_the_title($cur_post);
+		echo get_the_post_thumbnail( $cur_post,'fp-article-thumb',array('alt' => $title,'class'=>'img-responsive center') );
+	} elseif ( has_first_image($cur_post) ){
+		$title = get_the_title($cur_post);
+		$args = array(
+			'post_type'   => 'attachment',
+			'numberposts' => -1,
+			'post_status' => null,
+			'post_parent' => $cur_post->ID,
+			'exclude'     => get_post_thumbnail_id()
+		);
+		$attachments = get_posts($args);
+
+		if($attachments) {
+			the_post_first_image_thumbnail( $attachments[0]->ID, 'fp-article-thumb', array( 'alt' => $title, 'class'=>'img-responsive center' ) );
+		}
+	}
+	else { //Use the default image
+		echo '<img width="356" height="200" src="' . get_template_directory_uri() . '/img/chihuly.jpg" class="img-responsive center attachment-medium wp-post-image" alt="default">';
+	}
+}
+
+function frontpage_article_blurb(){
+	echo the_excerpt();
 }
